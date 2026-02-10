@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Write a Report - Interactive Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Brand Colours Configuration */
+        :root {
+            --brand-navy: #1f2a52;
+            --brand-teal: #00bec7;
+            --brand-mint: #d2f0f0;
+            --brand-grey: #abb5bf;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: var(--brand-navy);
+            background-color: #f8fafc;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--brand-grey);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--brand-navy);
+        }
+
+        .brand-text-navy { color: var(--brand-navy); }
+        .brand-bg-navy { background-color: var(--brand-navy); }
+        
+        .brand-text-teal { color: var(--brand-teal); }
+        .brand-bg-teal { background-color: var(--brand-teal); }
+        .brand-border-teal { border-color: var(--brand-teal); }
+
+        .brand-bg-mint { background-color: var(--brand-mint); }
+        
+        .brand-text-grey { color: var(--brand-grey); }
+        .brand-border-grey { border-color: var(--brand-grey); }
+
+        .tab-active {
+            border-bottom: 3px solid var(--brand-teal);
+            color: var(--brand-navy);
+            font-weight: 600;
+        }
+
+        .tab-inactive {
+            color: var(--brand-grey);
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab-inactive:hover {
+            color: var(--brand-teal);
+        }
+
+        /* Transitions */
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Interactive Card Hover */
+        .interactive-card {
+            transition: all 0.2s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="brand-bg-navy text-white shadow-lg">
+        <div class="max-w-5xl mx-auto px-4 py-8">
+            <div class="flex items-center gap-3 mb-2">
+                <i data-lucide="file-text" class="w-8 h-8 text-[#00bec7]"></i>
+                <h1 class="text-3xl font-bold tracking-tight">Report Writing Guide</h1>
+            </div>
+            <p class="text-[#d2f0f0] text-lg max-w-2xl">
+                A practical, interactive tool to help you structure, write, and refine professional reports using Plain English.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-5xl mx-auto px-4 py-8 w-full">
+        
+        <!-- Navigation Tabs -->
+        <div class="flex flex-wrap border-b brand-border-grey mb-8">
+            <button onclick="switchTab('prep')" id="tab-prep" class="tab-active px-6 py-3 text-lg transition-colors focus:outline-none">
+                1. Preparation
+            </button>
+            <button onclick="switchTab('structure')" id="tab-structure" class="tab-inactive px-6 py-3 text-lg transition-colors focus:outline-none">
+                2. Structure
+            </button>
+            <button onclick="switchTab('writing')" id="tab-writing" class="tab-inactive px-6 py-3 text-lg transition-colors focus:outline-none">
+                3. Writing Style
+            </button>
+            <button onclick="switchTab('checklist')" id="tab-checklist" class="tab-inactive px-6 py-3 text-lg transition-colors focus:outline-none">
+                4. Checklist
+            </button>
+        </div>
+
+        <!-- Section 1: Preparation -->
+        <div id="content-prep" class="fade-in">
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 brand-text-navy">Before You Start</h2>
+                    <p class="mb-6 text-gray-700 leading-relaxed">
+                        Don't start writing yet. A good report solves a specific problem for a specific person. 
+                        Answer these three questions to clarify your thinking.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-lg border brand-border-grey shadow-sm">
+                            <label class="block font-semibold brand-text-navy mb-2">1. Purpose</label>
+                            <p class="text-sm text-gray-600 mb-3">Why are you writing this? What is the outcome?</p>
+                            <textarea class="w-full p-3 rounded border brand-border-grey bg-gray-50 focus:ring-2 focus:ring-[#00bec7] focus:outline-none" rows="2" placeholder="e.g., To recommend a new software system to save costs..."></textarea>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-lg border brand-border-grey shadow-sm">
+                            <label class="block font-semibold brand-text-navy mb-2">2. Audience</label>
+                            <p class="text-sm text-gray-600 mb-3">Who will read this? What do they already know?</p>
+                            <textarea class="w-full p-3 rounded border brand-border-grey bg-gray-50 focus:ring-2 focus:ring-[#00bec7] focus:outline-none" rows="2" placeholder="e.g., Senior management (they know the problem but not the technical details)..."></textarea>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-lg border brand-border-grey shadow-sm">
+                            <label class="block font-semibold brand-text-navy mb-2">3. Scope</label>
+                            <p class="text-sm text-gray-600 mb-3">What are the boundaries? What will you NOT cover?</p>
+                            <textarea class="w-full p-3 rounded border brand-border-grey bg-gray-50 focus:ring-2 focus:ring-[#00bec7] focus:outline-none" rows="2" placeholder="e.g., Covers the Sydney office only, excluding remote staff..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-bg-mint p-6 rounded-xl">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i data-lucide="lightbulb" class="brand-text-navy"></i>
+                        <h3 class="font-bold brand-text-navy text-xl">Top Tips</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="min-w-6 h-6 rounded-full brand-bg-navy text-white flex items-center justify-center text-sm">✓</div>
+                            <p class="text-sm"><strong>Plan the structure first.</strong> Use headings as a roadmap before you write full sentences.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="min-w-6 h-6 rounded-full brand-bg-navy text-white flex items-center justify-center text-sm">✓</div>
+                            <p class="text-sm"><strong>Gather your data.</strong> Have your facts, figures, and research ready so you don't break your writing flow.</p>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="min-w-6 h-6 rounded-full brand-bg-navy text-white flex items-center justify-center text-sm">✓</div>
+                            <p class="text-sm"><strong>Check the style guide.</strong> Does your organisation have a specific template? Use it.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Structure -->
+        <div id="content-structure" class="hidden fade-in">
+            <h2 class="text-2xl font-bold mb-6 brand-text-navy">Standard Report Structure</h2>
+            <p class="mb-8 text-gray-700">Click on the report sections below to understand what belongs in each part.</p>
+
+            <div class="grid lg:grid-cols-3 gap-6">
+                <!-- Structure Menu -->
+                <div class="lg:col-span-1 space-y-2">
+                    <button onclick="showSectionInfo('exec')" class="w-full text-left p-4 rounded-lg bg-white border brand-border-grey hover:bg-[#d2f0f0] hover:border-[#00bec7] transition-colors focus:ring-2 focus:ring-[#00bec7] structure-btn active-structure" id="btn-exec">
+                        <span class="font-bold">1. Executive Summary</span>
+                    </button>
+                    <button onclick="showSectionInfo('intro')" class="w-full text-left p-4 rounded-lg bg-white border brand-border-grey hover:bg-[#d2f0f0] hover:border-[#00bec7] transition-colors focus:ring-2 focus:ring-[#00bec7] structure-btn" id="btn-intro">
+                        <span class="font-bold">2. Introduction</span>
+                    </button>
+                    <button onclick="showSectionInfo('body')" class="w-full text-left p-4 rounded-lg bg-white border brand-border-grey hover:bg-[#d2f0f0] hover:border-[#00bec7] transition-colors focus:ring-2 focus:ring-[#00bec7] structure-btn" id="btn-body">
+                        <span class="font-bold">3. Body / Findings</span>
+                    </button>
+                    <button onclick="showSectionInfo('concl')" class="w-full text-left p-4 rounded-lg bg-white border brand-border-grey hover:bg-[#d2f0f0] hover:border-[#00bec7] transition-colors focus:ring-2 focus:ring-[#00bec7] structure-btn" id="btn-concl">
+                        <span class="font-bold">4. Conclusion</span>
+                    </button>
+                    <button onclick="showSectionInfo('rec')" class="w-full text-left p-4 rounded-lg bg-white border brand-border-grey hover:bg-[#d2f0f0] hover:border-[#00bec7] transition-colors focus:ring-2 focus:ring-[#00bec7] structure-btn" id="btn-rec">
+                        <span class="font-bold">5. Recommendations</span>
+                    </button>
+                </div>
+
+                <!-- Info Display -->
+                <div class="lg:col-span-2 bg-white border brand-border-grey rounded-xl p-8 shadow-md min-h-[400px]">
+                    <div id="info-exec" class="structure-content">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="brand-bg-teal text-white px-3 py-1 rounded text-sm font-bold uppercase tracking-wide">Crucial</span>
+                            <h3 class="text-2xl font-bold brand-text-navy">Executive Summary</h3>
+                        </div>
+                        <p class="text-lg text-gray-700 mb-6">
+                            This is the most important part of your report. Many busy executives will <em>only</em> read this section.
+                        </p>
+                        <div class="space-y-4">
+                            <h4 class="font-bold border-b brand-border-grey pb-2">What to include:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>The purpose of the report.</li>
+                                <li>The key findings or problems identified.</li>
+                                <li>The main recommendations.</li>
+                            </ul>
+                            <div class="brand-bg-mint p-4 rounded mt-6 border-l-4 brand-border-teal">
+                                <p class="text-sm"><strong>Tip:</strong> Write this section <em>last</em>, after you have finished the rest of the report. Keep it under one page.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="info-intro" class="structure-content hidden">
+                        <h3 class="text-2xl font-bold brand-text-navy mb-4">Introduction</h3>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Sets the scene for the reader. It explains why the report exists and what it covers.
+                        </p>
+                        <div class="space-y-4">
+                            <h4 class="font-bold border-b brand-border-grey pb-2">Key elements:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li><strong>Background:</strong> Briefly explain the context or history.</li>
+                                <li><strong>Purpose:</strong> Why was this report written?</li>
+                                <li><strong>Scope:</strong> What areas are covered (and what are not).</li>
+                                <li><strong>Methodology:</strong> How did you get your information? (e.g., surveys, interviews, desktop research).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="info-body" class="structure-content hidden">
+                        <h3 class="text-2xl font-bold brand-text-navy mb-4">Body (Findings & Discussion)</h3>
+                        <p class="text-lg text-gray-700 mb-6">
+                            This is where you present your evidence. Organise this section logically, using clear headings.
+                        </p>
+                        <div class="space-y-4">
+                            <h4 class="font-bold border-b brand-border-grey pb-2">How to structure it:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Use numbered headings (e.g., 2.1, 2.2).</li>
+                                <li>Group related information together.</li>
+                                <li>Present facts objectively.</li>
+                                <li>Use charts, tables, and lists to break up dense text.</li>
+                            </ul>
+                            <div class="brand-bg-mint p-4 rounded mt-6 border-l-4 brand-border-teal">
+                                <p class="text-sm"><strong>Remember:</strong> Analyse the facts—don't just list them. Explain what the data means.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="info-concl" class="structure-content hidden">
+                        <h3 class="text-2xl font-bold brand-text-navy mb-4">Conclusion</h3>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Summarises the main points derived from the body. There should be no new information here.
+                        </p>
+                        <div class="space-y-4">
+                            <h4 class="font-bold border-b brand-border-grey pb-2">Checklist:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Does it follow logically from your findings?</li>
+                                <li>Does it answer the main question posed in the introduction?</li>
+                                <li>Is it concise and clear?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="info-rec" class="structure-content hidden">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-[#1f2a52] text-white px-3 py-1 rounded text-sm font-bold uppercase tracking-wide">Actionable</span>
+                            <h3 class="text-2xl font-bold brand-text-navy">Recommendations</h3>
+                        </div>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Specific actions the reader should take based on your conclusion.
+                        </p>
+                        <div class="space-y-4">
+                            <h4 class="font-bold border-b brand-border-grey pb-2">Make them SMART:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li><strong>Specific:</strong> Start with a verb (e.g., "Purchase", "Hire", "Update").</li>
+                                <li><strong>Measurable:</strong> How will we know it's done?</li>
+                                <li><strong>Achievable:</strong> Can we actually do this?</li>
+                                <li><strong>Realistic:</strong> Do we have the resources?</li>
+                                <li><strong>Time-bound:</strong> When should it happen?</li>
+                            </ul>
+                            <p class="mt-4 italic text-gray-600">Example: "Update the safety manual by 30 June."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Writing Style (Plain English) -->
+        <div id="content-writing" class="hidden fade-in">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 brand-text-navy">Writing in Plain English</h2>
+                <p class="text-lg text-gray-700">
+                    Plain English is faster to write and easier to read. It is not "dumbing down"—it is about communicating complex ideas clearly.
+                </p>
+            </div>
+
+            <!-- Comparison Interactive -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-red-50 border border-red-200 p-6 rounded-lg">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-red-800">Avoid (Bureaucratic)</h3>
+                        <i data-lucide="x-circle" class="text-red-500"></i>
+                    </div>
+                    <p class="text-gray-800 mb-4 font-serif italic">
+                        "It is requested that all staff members proceed to the undertaking of the completion of the attached forms by the close of business."
+                    </p>
+                    <ul class="text-sm text-red-700 list-disc list-inside">
+                        <li>Passive voice ("It is requested")</li>
+                        <li>Wordy ("proceed to the undertaking")</li>
+                        <li>Formal jargon ("close of business")</li>
+                    </ul>
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-200 p-6 rounded-lg">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-emerald-800">Use (Plain English)</h3>
+                        <i data-lucide="check-circle" class="text-emerald-500"></i>
+                    </div>
+                    <p class="text-gray-800 mb-4 font-semibold">
+                        "Please fill in the attached forms by 5 pm today."
+                    </p>
+                    <ul class="text-sm text-emerald-700 list-disc list-inside">
+                        <li>Active voice ("Please fill in")</li>
+                        <li>Direct verbs</li>
+                        <li>Specific time ("5 pm")</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Fixer -->
+            <h3 class="text-xl font-bold mb-4 brand-text-navy">Try it: Fix the sentence</h3>
+            <div class="bg-white border brand-border-grey rounded-xl shadow-sm overflow-hidden">
+                <div class="p-6 bg-[#1f2a52] text-white">
+                    <p class="mb-2 text-[#d2f0f0] uppercase tracking-wider text-xs font-bold">Original Sentence</p>
+                    <p class="text-lg">"Utilisation of the new software solution will result in the maximisation of productivity for the department."</p>
+                </div>
+                <div class="p-6">
+                    <p class="mb-3 font-semibold text-gray-700">How would you rewrite this?</p>
+                    
+                    <div class="space-y-3">
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left p-4 border rounded hover:bg-gray-50 transition-colors flex items-center justify-between group">
+                            <span>The new software solution is going to result in productivity maximisation.</span>
+                            <span class="status-icon hidden"></span>
+                        </button>
+                        
+                        <button onclick="checkAnswer(this, true)" class="w-full text-left p-4 border rounded hover:bg-gray-50 transition-colors flex items-center justify-between group">
+                            <span>Using the new software will increase the department's productivity.</span>
+                            <span class="status-icon hidden"></span>
+                        </button>
+
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left p-4 border rounded hover:bg-gray-50 transition-colors flex items-center justify-between group">
+                            <span>It is anticipated that productivity will be maximised by the software utilisation.</span>
+                            <span class="status-icon hidden"></span>
+                        </button>
+                    </div>
+
+                    <div id="feedback-msg" class="mt-4 p-4 rounded hidden"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Checklist -->
+        <div id="content-checklist" class="hidden fade-in">
+            <h2 class="text-2xl font-bold mb-6 brand-text-navy">Pre-Submission Checklist</h2>
+            <p class="mb-6 text-gray-700">Ensure you can tick all these boxes before sending your report.</p>
+
+            <div class="bg-white rounded-xl shadow-sm border brand-border-grey overflow-hidden">
+                <div class="divide-y divide-gray-100" id="checklist-container">
+                    <!-- JS will populate this -->
+                </div>
+                <div class="p-6 bg-gray-50 border-t brand-border-grey flex justify-between items-center">
+                    <span id="progress-text" class="font-bold brand-text-navy">0% Complete</span>
+                    <button onclick="resetChecklist()" class="text-sm brand-text-teal hover:underline hover:text-[#1f2a52]">Reset Checklist</button>
+                </div>
+                <div class="h-2 bg-gray-200 w-full">
+                    <div id="progress-bar" class="h-full brand-bg-teal transition-all duration-300" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="mt-8 p-6 brand-bg-mint rounded-xl text-center">
+                <h3 class="font-bold brand-text-navy text-lg mb-2">Ready to submit?</h3>
+                <p class="text-gray-700 mb-4">If you hit 100%, convert your document to PDF and send it off.</p>
+                <button class="brand-bg-navy text-white px-8 py-3 rounded font-bold hover:bg-[#00bec7] transition-colors shadow-lg">
+                    Good Luck!
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 border-t brand-border-grey mt-auto py-8">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <p class="text-[#abb5bf] text-sm">Report Writing Guide Template | Plain English Principles</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Navigation Logic ---
+        function switchTab(tabId) {
+            // Hide all content
+            const contents = ['prep', 'structure', 'writing', 'checklist'];
+            contents.forEach(c => {
+                document.getElementById(`content-${c}`).classList.add('hidden');
+                document.getElementById(`tab-${c}`).classList.remove('tab-active');
+                document.getElementById(`tab-${c}`).classList.add('tab-inactive');
+            });
+
+            // Show selected
+            document.getElementById(`content-${tabId}`).classList.remove('hidden');
+            const activeTab = document.getElementById(`tab-${tabId}`);
+            activeTab.classList.add('tab-active');
+            activeTab.classList.remove('tab-inactive');
+        }
+
+        // --- Structure Section Logic ---
+        function showSectionInfo(sectionId) {
+            // Reset buttons styling
+            document.querySelectorAll('.structure-btn').forEach(btn => {
+                btn.classList.remove('brand-bg-navy', 'text-white', 'hover:bg-[#151e3b]');
+                btn.classList.add('bg-white', 'text-gray-900', 'hover:bg-[#d2f0f0]');
+                // Remove the left border indicator
+                btn.classList.remove('border-l-4', 'border-[#00bec7]');
+            });
+
+            // Highlight active button
+            const activeBtn = document.getElementById(`btn-${sectionId}`);
+            activeBtn.classList.remove('bg-white', 'text-gray-900', 'hover:bg-[#d2f0f0]');
+            activeBtn.classList.add('brand-bg-navy', 'text-white', 'hover:bg-[#151e3b]');
+            
+            // Hide all info panels
+            document.querySelectorAll('.structure-content').forEach(el => el.classList.add('hidden'));
+
+            // Show selected info
+            const infoDiv = document.getElementById(`info-${sectionId}`);
+            infoDiv.classList.remove('hidden');
+            infoDiv.classList.add('fade-in');
+        }
+
+        // --- Quiz Logic ---
+        function checkAnswer(btn, isCorrect) {
+            // Reset previous states in this group
+            const parent = btn.parentElement;
+            const buttons = parent.querySelectorAll('button');
+            const feedback = document.getElementById('feedback-msg');
+
+            buttons.forEach(b => {
+                b.classList.remove('bg-green-100', 'border-green-500', 'bg-red-100', 'border-red-500');
+                b.classList.add('hover:bg-gray-50');
+                b.querySelector('.status-icon').innerHTML = '';
+                b.querySelector('.status-icon').classList.add('hidden');
+            });
+
+            // Apply new state
+            btn.classList.remove('hover:bg-gray-50');
+            const iconSpan = btn.querySelector('.status-icon');
+            iconSpan.classList.remove('hidden');
+
+            feedback.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+
+            if (isCorrect) {
+                btn.classList.add('bg-green-50', 'border-green-500');
+                iconSpan.innerHTML = '<i data-lucide="check" class="text-green-600"></i>';
+                feedback.classList.add('bg-green-100', 'text-green-800');
+                feedback.innerHTML = '<strong>Correct!</strong> This uses an active verb ("Using") and simple, direct language.';
+            } else {
+                btn.classList.add('bg-red-50', 'border-red-500');
+                iconSpan.innerHTML = '<i data-lucide="x" class="text-red-600"></i>';
+                feedback.classList.add('bg-red-100', 'text-red-800');
+                feedback.innerHTML = '<strong>Not quite.</strong> This option still uses abstract nouns like "Utilisation" or "Maximisation" instead of strong verbs.';
+            }
+            lucide.createIcons();
+        }
+
+        // --- Checklist Logic ---
+        const checklistItems = [
+            "I have defined the purpose and audience clearly.",
+            "The Executive Summary stands alone and covers findings & recommendations.",
+            "I have used active voice (e.g. 'We decided', not 'A decision was made').",
+            "Headings are numbered and descriptive.",
+            "Sentences are short (average 15-20 words).",
+            "I have proofread for Australian spelling (e.g. 'Colour', 'Organise').",
+            "Charts and tables have clear captions.",
+            "Recommendations are specific and actionable."
+        ];
+
+        function initChecklist() {
+            const container = document.getElementById('checklist-container');
+            container.innerHTML = '';
+            
+            checklistItems.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'p-4 flex items-center gap-4 hover:bg-gray-50 transition-colors cursor-pointer';
+                div.onclick = () => toggleCheck(index);
+                
+                div.innerHTML = `
+                    <div class="relative flex items-center">
+                        <input type="checkbox" id="check-${index}" class="peer h-6 w-6 cursor-pointer appearance-none rounded border-2 border-[#abb5bf] transition-all checked:border-[#00bec7] checked:bg-[#00bec7]">
+                        <svg class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity peer-checked:opacity-100 text-white" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <label for="check-${index}" class="cursor-pointer select-none text-gray-700 font-medium">${item}</label>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function toggleCheck(index) {
+            const checkbox = document.getElementById(`check-${index}`);
+            // If the div was clicked, toggle the checkbox state manually
+            // (If the checkbox itself was clicked, this event bubbles and we just update UI)
+            // Note: onclick on div triggers before checkbox change, so we need care.
+            // Simplest way: let the click fall through to input if input clicked, else toggle input.
+            // But here we rely on the input state update.
+            
+            // To prevent double toggle if clicking label/input directly vs div:
+            // We just update the progress bar based on current state after a brief delay 
+            // to allow native checkbox behavior to finish.
+            setTimeout(updateProgress, 10);
+        }
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+            const percent = Math.round((checked.length / checkboxes.length) * 100);
+            
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+            document.getElementById('progress-text').innerText = `${percent}% Complete`;
+            
+            if (percent === 100) {
+                document.getElementById('progress-bar').classList.add('bg-green-500');
+                document.getElementById('progress-bar').classList.remove('brand-bg-teal');
+            } else {
+                document.getElementById('progress-bar').classList.add('brand-bg-teal');
+                document.getElementById('progress-bar').classList.remove('bg-green-500');
+            }
+        }
+
+        function resetChecklist() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = false);
+            updateProgress();
+        }
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initChecklist();
+            // Select Executive Summary by default visually
+            document.getElementById('btn-exec').classList.remove('bg-white', 'text-gray-900', 'hover:bg-[#d2f0f0]');
+            document.getElementById('btn-exec').classList.add('brand-bg-navy', 'text-white', 'hover:bg-[#151e3b]');
+        });
+
+    </script>
+</body>
+</html>
